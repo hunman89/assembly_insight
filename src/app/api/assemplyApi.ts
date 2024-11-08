@@ -107,7 +107,8 @@ export const getMember = async (name: string): Promise<GetMembersResult> => {
       "&DAESU=" +
       generation +
       "&NAME=" +
-      name
+      name,
+    { next: { revalidate: 3600 } }
   );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
